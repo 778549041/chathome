@@ -60,8 +60,9 @@ def capture_screen():
         if img.mode == "RGBA":
             img = img.convert('RGB')
         # Set the screenshot name to the current timestamp
-        timeName = fileTime.strftime('%H-%M-%S')
-        imgName = os.path.join(os.getcwd(), carSeriesName + '-' + curMonthD + '-' + timeName + '-' + task.account + '.jpg')
+        # 取出当前时间的小时、分钟、秒作为文件名
+        curHMS = fileTime.strftime('%H-%M-%S')
+        imgName = os.path.join(os.getcwd(), carSeriesName + '-' + curMonthD + '-' + curHMS + '-' + task.account + '.jpg')
         img.save(imgName)
         os.chdir(absPath)
     except Exception as e:
